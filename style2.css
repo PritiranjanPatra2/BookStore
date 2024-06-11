@@ -41,7 +41,7 @@ nav .logo {
 #rightNav #toggle {
     width: 4rem;
     height: 1.7rem;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     border-radius: 15px;
     margin-right: 1rem;
     position: relative;
@@ -52,12 +52,12 @@ nav .logo {
 #rightNav #toggle #innertoggle {
     width: 1rem;
     height: 1.5rem;
-    border: 2px solid blue;
+    border: 2px solid white;
+    background-color: black;
     border-radius: 50%;
     position: absolute;
     transition: all 0.3s ease;
-}
-
+  }
 .right {
     right: 0;
     background-color: black;
