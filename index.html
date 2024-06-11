@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+  </head>
+  <body id="body" class="white">
+    <nav>
+      <div class="logo"><img src="reshot-icon-book-CHU6FN3ZWA.svg" alt=""></div>
+      <div id="rightNav">
+        <div id="toggle">
+          <div id="innertoggle"></div>
+        </div>
+        <button id="signup">SignUp</button>
+        <a href="./login.html"><button id="login">Login</button></a>
+      </div>
+    </nav>
+
+    <div class="content">
+      <h1>Welcome to Book Management System</h1>
+      <p>Your one-stop solution for managing your book collection efficiently. Sign up or log in to get started.</p>
+    </div>
+
+    <div class="form-backdrop" id="formBackdrop"></div>
+    <form action="" id="form">
+      <label for="username">Username:</label><br />
+      <input type="text" id="username" name="username" /><br />
+      <label for="email">Email:</label><br />
+      <input type="text" id="email" name="email" /><br />
+      <label for="password">Password:</label><br />
+      <input type="password" id="password" name="password" /><br />
+      <a href="./login.html"><input type="submit" value="Submit" id="submit" /></a>
+    </form>
+
+    <script>
+      let body = document.getElementById("body");
+      let signup = document.getElementById("signup");
+      let toggle = document.getElementById("toggle");
+      let form = document.getElementById("form");
+      let innertoggle = document.getElementById("innertoggle");
+      let formBackdrop = document.getElementById("formBackdrop");
+
+      toggle.addEventListener("click", function () {
+        body.classList.toggle("active");
+        form.classList.toggle("active");
+        innertoggle.classList.toggle("right");
+        // body.style.backgroundImage.toggle='none';
+        if(body.classList.contains('white')){
+            body.classList.remove('white');
+            body.classList.add('black');
+        }else{
+            body.classList.remove('black');
+            body.classList.add('white');
+        }
+      });
+
+      signup.addEventListener("click", function () {
+        form.style.display = "block";
+        formBackdrop.style.display = "block";
+      });
+
+      formBackdrop.addEventListener("click", function () {
+        form.style.display = "none";
+        formBackdrop.style.display = "none";
+      });
+
+      let username = document.getElementById("username");
+      let password = document.getElementById("password");
+      let button = document.getElementById("submit");
+
+      button.addEventListener("click", function (event) {
+        event.preventDefault();
+        let user = username.value;
+        let pass = password.value;
+        localStorage.setItem("user", user);
+        localStorage.setItem("pass", pass);
+        window.location.href = "./login.html";
+      });
+    </script>
+  </body>
+</html>

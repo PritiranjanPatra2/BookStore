@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="style2.css">
+</head>
+<body id="body">
+    <nav>
+        <div class="logo">Book</div>
+        <div id="rightNav">
+            <div id="toggle">
+                <div id="innertoggle"></div>
+            </div>
+            <button id="login">Login</button>
+            <a href="./index.html"><button id="logout">logout</button></a>
+        </div>
+    </nav>
+
+    <div class="form-backdrop" id="formBackdrop"></div>
+    <form id="loginForm">
+        <h1>Login</h1>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <input type="submit" value="Submit">
+    </form>
+
+    <div class="container">
+        <div id="category">
+            <h1>ALL CATEGORIES</h1>
+        </div>
+        <div id="des"></div>
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <div class="popup-body"></div>
+        </div>
+    </div>
+
+    <script src="catagory.js"></script>
+    <script>
+        let con = document.querySelector('.container');
+        // con.style.visibility = 'hidden';
+        con.style.display='none'
+
+        let body = document.getElementById('body');
+        let login = document.getElementById('login');
+        let toggle = document.getElementById('toggle');
+        let innertoggle = document.getElementById('innertoggle');
+        let popupbody=document.querySelector('.popup-body');
+
+        const loginform = document.querySelector('#loginForm');
+        const logout = document.querySelector('#logout');
+        const formBackdrop = document.querySelector('#formBackdrop');
+        logout.style.display = "none";
+
+        toggle.addEventListener('click', function() {
+            body.classList.toggle('active');
+            innertoggle.classList.toggle('right');
+            loginform.classList.toggle('active');
+            des.classList.toggle('active');
+            category.classList.toggle('active');
+            popupbody.classList.toggle('active');
+        });
+
+        login.addEventListener('click', function() {
+            formBackdrop.style.display = 'block';
+            loginform.style.display = 'block';
+        });
+
+        formBackdrop.addEventListener('click', function() {
+            formBackdrop.style.display = 'none';
+            loginform.style.display = 'none';
+        });
+
+        loginform.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.querySelector('#name').value;
+            const password = document.querySelector('#password').value;
+
+            if (name === "" || password === "") {
+                alert('Please fill all fields');
+                return;
+            }
+
+            if (name === localStorage.getItem('user') && password === localStorage.getItem('pass')) {
+                alert('Login successful');
+                login.innerText = `Hi ${name}`;
+                login.style.padding = '1rem';
+                login.style.fontSize = "1rem";
+                login.disabled = true;
+                logout.style.display = "block";
+                formBackdrop.style.display = 'none';
+                loginform.style.display = 'none';
+                document.querySelector('#name').value = "";
+                document.querySelector('#password').value = "";
+                // con.style.visibility = "visible";
+                con.style.display="flex";
+            } else {
+                alert('Wrong username or password');
+            }
+        });
+    </script>
+</body>
+</html>
