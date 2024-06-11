@@ -8,7 +8,7 @@
 </head>
 <body id="body">
     <nav>
-        <div class="logo">Book</div>
+        <div class="logo"><img src="reshot-icon-book-CHU6FN3ZWA.svg" alt=""></div>
         <div id="rightNav">
             <div id="toggle">
                 <div id="innertoggle"></div>
@@ -91,7 +91,7 @@
             if (name === localStorage.getItem('user') && password === localStorage.getItem('pass')) {
                 alert('Login successful');
                 login.innerText = `Hi ${name}`;
-                login.style.padding = '1rem';
+                login.style.padding = '.5rem';
                 login.style.fontSize = "1rem";
                 login.disabled = true;
                 logout.style.display = "block";

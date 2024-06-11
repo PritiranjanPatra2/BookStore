@@ -27,7 +27,9 @@ nav .logo {
     font-size: 1.5rem;
     font-weight: bold;
     color: green;
-}
+    /* border: 2px solid red; */
+    width: 3.4rem;
+  }
 
 #rightNav {
     display: flex;
